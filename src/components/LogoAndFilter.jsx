@@ -1,7 +1,11 @@
 import { useState } from "react";
 import FilterModal from "./FilterModal";
 
-export default function LogoAndFilter({ setGuestsQuantity, guestsQuantity }) {
+export default function LogoAndFilter({
+  setGuestsQuantity,
+  guestsQuantity,
+  setLocation,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -36,6 +40,7 @@ export default function LogoAndFilter({ setGuestsQuantity, guestsQuantity }) {
         action={handleClick}
         setGuestsQuantity={setGuestsQuantity}
         guestsQuantity={guestsQuantity}
+        setLocation={setLocation}
       />
     </div>
   );

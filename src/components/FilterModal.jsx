@@ -7,6 +7,7 @@ export default function FilterModal({
   action,
   setGuestsQuantity,
   guestsQuantity,
+  setLocation,
 }) {
   const [totalGuestsCounter, setTotalGuestsCounter] = useState("0");
 
@@ -14,6 +15,10 @@ export default function FilterModal({
     if (e.target.id === "modal") {
       action();
     }
+  };
+
+  const handleInput = (e) => {
+    setLocation(e.target.value);
   };
 
   return (
@@ -41,6 +46,7 @@ export default function FilterModal({
               </span>
               <input
                 id="location_filter_mobile"
+                onChange={handleInput}
                 className="text-[10px] lg:text-[12px]"
                 type="text"
                 placeholder="Add Location"

@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CardPreset from "./CardPreset";
 
-export default function StaysContainer({ guestsQuantity }) {
+export default function StaysContainer({ guestsQuantity, location }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [staysCount, setStaysCount] = useState(0);
 
   console.log(guestsQuantity);
+  console.log(location);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,7 +48,10 @@ export default function StaysContainer({ guestsQuantity }) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {data?.map((stay) => {
-          if (stay.maxGuests >= guestsQuantity) {
+          if (
+            stay.maxGuests >= guestsQuantity &&
+            stay.city.toLowerCase().includes(location.toLowerCase())
+          ) {
             return <CardPreset info={stay} />;
           }
         })}

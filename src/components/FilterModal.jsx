@@ -72,7 +72,7 @@ export default function FilterModal({
             </div>
           </div>
           <div className="hidden lg:block place-self-center">
-            <SearchButton />
+            <SearchButton onClick={handleCloseButton} />
           </div>
         </div>
         <GuestsFilter

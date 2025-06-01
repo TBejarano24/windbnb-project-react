@@ -4,6 +4,8 @@ import useStaysData from "../hooks/useStaysData";
 export default function StaysContainer({ guestsQuantity, location }) {
   const [data, error, loading] = useStaysData("/stays.json");
 
+  let staysId = 0;
+
   if (loading) {
     return <p className="text-[26px] font-bold mt-10">Loading content...</p>;
   }
@@ -33,7 +35,8 @@ export default function StaysContainer({ guestsQuantity, location }) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {filteredStays?.map((stay) => {
-          return <CardPreset info={stay} />;
+          staysId++;
+          return <CardPreset info={stay} key={staysId} />;
         })}
       </div>
     </div>
